@@ -1,0 +1,5 @@
+# Mirage environment (.venv). Versions are the ones the published results were produced with.
+cactus-compute==4.2.2
+numpy==2.5.5
+pillow==13.0.0
+psutil==7.2.2

@@ -1,0 +1,377 @@
+{
+ "images": 300,
+ "gt_boxes": 2287,
+ "pred_boxes": 3031,
+ "preds_per_image": 10.1,
+ "class_agnostic_recall@0.5": {
+  "all": 34.2,
+  "small": 12.7,
+  "medium": 34.7,
+  "large": 70.4,
+  "person": 37.4,
+  "household": 29.0,
+  "other": 37.5
+ },
+ "gt_counts": {
+  "all": 2287,
+  "small": 931,
+  "medium": 812,
+  "large": 544,
+  "person": 671,
+  "household": 867,
+  "other": 749
+ },
+ "label_agreement_on_matched_%": {
+  "all": 58.7,
+  "person": 86.1,
+  "household": 43.0,
+  "other": 48.4
+ },
+ "person": {
+  "instance_recall@0.5_%": 33.5,
+  "instance_precision@0.5_%": 53.6,
+  "recall_by_size_%": {
+   "small": 8.3,
+   "medium": 34.4,
+   "large": 69.4
+  },
+  "gt_by_size": {
+   "small": 264,
+   "medium": 227,
+   "large": 180
+  },
+  "image_level_recall_%": 87.4,
+  "image_level_recall_large_person_%": 94.1,
+  "image_false_alarm_rate_%": 5.0,
+  "images_with_person": 159,
+  "images_without_person": 141
+ },
+ "score_calibration (bin: n_preds, %matching_any_GT@0.5)": {
+  "0.0-0.1": [
+   29,
+   0.0
+  ],
+  "0.3-0.4": [
+   1200,
+   10.1
+  ],
+  "0.4-0.5": [
+   880,
+   21.4
+  ],
+  "0.5-0.6": [
+   517,
+   42.9
+  ],
+  "0.6-0.7": [
+   241,
+   56.8
+  ],
+  "0.7-0.8": [
+   120,
+   65.8
+  ],
+  "0.8-0.9": [
+   43,
+   81.4
+  ],
+  "0.9-1.0": [
+   1,
+   100.0
+  ]
+ },
+ "latency_ms": {
+  "median": 1748.668500000349,
+  "p90": 2442.733799999587
+ },
+ "run_errors": 0,
+ "top_label_confusions(gt->pred)": [
+  [
+   "orange",
+   "peppers",
+   6
+  ],
+  [
+   "person",
+   "hand",
+   5
+  ],
+  [
+   "bus",
+   "car",
+   5
+  ],
+  [
+   "cup",
+   "bottle",
+   4
+  ],
+  [
+   "person",
+   "chair",
+   4
+  ],
+  [
+   "chair",
+   "person",
+   4
+  ],
+  [
+   "cake",
+   "chocolate chip cookie",
+   4
+  ],
+  [
+   "apple",
+   "peppers",
+   4
+  ],
+  [
+   "dog",
+   "cat",
+   3
+  ],
+  [
+   "traffic light",
+   "street lamp",
+   3
+  ],
+  [
+   "cow",
+   "horse",
+   3
+  ],
+  [
+   "traffic light",
+   "metal pole",
+   3
+  ],
+  [
+   "truck",
+   "car",
+   3
+  ],
+  [
+   "dining table",
+   "plate",
+   3
+  ],
+  [
+   "sheep",
+   "elephant",
+   3
+  ],
+  [
+   "person",
+   "musician",
+   3
+  ],
+  [
+   "bed",
+   "bedding",
+   2
+  ],
+  [
+   "bird",
+   "duck",
+   2
+  ],
+  [
+   "mouse",
+   "computer mouse",
+   2
+  ],
+  [
+   "cup",
+   "wine glass",
+   2
+  ],
+  [
+   "person",
+   "duck",
+   2
+  ],
+  [
+   "tv",
+   "window",
+   2
+  ],
+  [
+   "giraffe",
+   "zebra",
+   2
+  ],
+  [
+   "umbrella",
+   "flag",
+   2
+  ],
+  [
+   "apple",
+   "tomato",
+   2
+  ]
+ ],
+ "names_used_on_gt_persons": [
+  [
+   "person",
+   75
+  ],
+  [
+   "woman",
+   43
+  ],
+  [
+   "man",
+   35
+  ],
+  [
+   "baseball player",
+   14
+  ],
+  [
+   "child",
+   9
+  ],
+  [
+   "group of people",
+   9
+  ],
+  [
+   "skier",
+   9
+  ],
+  [
+   "hand",
+   5
+  ],
+  [
+   "rugby player",
+   5
+  ],
+  [
+   "chair",
+   4
+  ],
+  [
+   "boy",
+   3
+  ],
+  [
+   "musician",
+   3
+  ],
+  [
+   "young girl",
+   2
+  ],
+  [
+   "duck",
+   2
+  ],
+  [
+   "cyclist",
+   2
+  ],
+  [
+   "basketball player",
+   2
+  ],
+  [
+   "audience",
+   2
+  ],
+  [
+   "face",
+   2
+  ],
+  [
+   "soccer player",
+   2
+  ],
+  [
+   "wall",
+   1
+  ],
+  [
+   "dining table",
+   1
+  ],
+  [
+   "door",
+   1
+  ],
+  [
+   "girl",
+   1
+  ],
+  [
+   "dog",
+   1
+  ],
+  [
+   "young woman",
+   1
+  ],
+  [
+   "male tennis player",
+   1
+  ],
+  [
+   "crowd",
+   1
+  ],
+  [
+   "building",
+   1
+  ],
+  [
+   "elephant",
+   1
+  ],
+  [
+   "car",
+   1
+  ],
+  [
+   "bride",
+   1
+  ],
+  [
+   "groom",
+   1
+  ],
+  [
+   "painting",
+   1
+  ],
+  [
+   "bed",
+   1
+  ],
+  [
+   "shirt",
+   1
+  ],
+  [
+   "tree",
+   1
+  ],
+  [
+   "blue bag",
+   1
+  ],
+  [
+   "young boy",
+   1
+  ],
+  [
+   "refrigerator",
+   1
+  ],
+  [
+   "traffic cone",
+   1
+  ]
+ ]
+}

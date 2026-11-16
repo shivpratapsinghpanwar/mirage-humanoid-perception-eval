@@ -1,0 +1,226 @@
+[
+ {
+  "file": "00_large.png",
+  "text": "EXIT",
+  "size": "large",
+  "text_px": 60,
+  "rot": 0
+ },
+ {
+  "file": "00_large_rot15.png",
+  "text": "EXIT",
+  "size": "large",
+  "text_px": 60,
+  "rot": 15
+ },
+ {
+  "file": "00_medium.png",
+  "text": "EXIT",
+  "size": "medium",
+  "text_px": 26,
+  "rot": 0
+ },
+ {
+  "file": "00_small.png",
+  "text": "EXIT",
+  "size": "small",
+  "text_px": 13,
+  "rot": 0
+ },
+ {
+  "file": "01_large.png",
+  "text": "PUSH",
+  "size": "large",
+  "text_px": 60,
+  "rot": 0
+ },
+ {
+  "file": "01_large_rot15.png",
+  "text": "PUSH",
+  "size": "large",
+  "text_px": 60,
+  "rot": 15
+ },
+ {
+  "file": "01_medium.png",
+  "text": "PUSH",
+  "size": "medium",
+  "text_px": 26,
+  "rot": 0
+ },
+ {
+  "file": "01_small.png",
+  "text": "PUSH",
+  "size": "small",
+  "text_px": 13,
+  "rot": 0
+ },
+ {
+  "file": "02_large.png",
+  "text": "ROOM 204",
+  "size": "large",
+  "text_px": 60,
+  "rot": 0
+ },
+ {
+  "file": "02_large_rot15.png",
+  "text": "ROOM 204",
+  "size": "large",
+  "text_px": 60,
+  "rot": 15
+ },
+ {
+  "file": "02_medium.png",
+  "text": "ROOM 204",
+  "size": "medium",
+  "text_px": 26,
+  "rot": 0
+ },
+ {
+  "file": "02_small.png",
+  "text": "ROOM 204",
+  "size": "small",
+  "text_px": 13,
+  "rot": 0
+ },
+ {
+  "file": "03_large.png",
+  "text": "WET FLOOR",
+  "size": "large",
+  "text_px": 60,
+  "rot": 0
+ },
+ {
+  "file": "03_large_rot15.png",
+  "text": "WET FLOOR",
+  "size": "large",
+  "text_px": 60,
+  "rot": 15
+ },
+ {
+  "file": "03_medium.png",
+  "text": "WET FLOOR",
+  "size": "medium",
+  "text_px": 26,
+  "rot": 0
+ },
+ {
+  "file": "03_small.png",
+  "text": "WET FLOOR",
+  "size": "small",
+  "text_px": 13,
+  "rot": 0
+ },
+ {
+  "file": "04_large.png",
+  "text": "DANGER",
+  "size": "large",
+  "text_px": 60,
+  "rot": 0
+ },
+ {
+  "file": "04_large_rot15.png",
+  "text": "DANGER",
+  "size": "large",
+  "text_px": 60,
+  "rot": 15
+ },
+ {
+  "file": "04_medium.png",
+  "text": "DANGER",
+  "size": "medium",
+  "text_px": 26,
+  "rot": 0
+ },
+ {
+  "file": "04_small.png",
+  "text": "DANGER",
+  "size": "small",
+  "text_px": 13,
+  "rot": 0
+ },
+ {
+  "file": "05_large.png",
+  "text": "KITCHEN",
+  "size": "large",
+  "text_px": 60,
+  "rot": 0
+ },
+ {
+  "file": "05_large_rot15.png",
+  "text": "KITCHEN",
+  "size": "large",
+  "text_px": 60,
+  "rot": 15
+ },
+ {
+  "file": "05_medium.png",
+  "text": "KITCHEN",
+  "size": "medium",
+  "text_px": 26,
+  "rot": 0
+ },
+ {
+  "file": "05_small.png",
+  "text": "KITCHEN",
+  "size": "small",
+  "text_px": 13,
+  "rot": 0
+ },
+ {
+  "file": "06_large.png",
+  "text": "LIFT 3",
+  "size": "large",
+  "text_px": 60,
+  "rot": 0
+ },
+ {
+  "file": "06_large_rot15.png",
+  "text": "LIFT 3",
+  "size": "large",
+  "text_px": 60,
+  "rot": 15
+ },
+ {
+  "file": "06_medium.png",
+  "text": "LIFT 3",
+  "size": "medium",
+  "text_px": 26,
+  "rot": 0
+ },
+ {
+  "file": "06_small.png",
+  "text": "LIFT 3",
+  "size": "small",
+  "text_px": 13,
+  "rot": 0
+ },
+ {
+  "file": "07_large.png",
+  "text": "NO ENTRY",
+  "size": "large",
+  "text_px": 60,
+  "rot": 0
+ },
+ {
+  "file": "07_large_rot15.png",
+  "text": "NO ENTRY",
+  "size": "large",
+  "text_px": 60,
+  "rot": 15
+ },
+ {
+  "file": "07_medium.png",
+  "text": "NO ENTRY",
+  "size": "medium",
+  "text_px": 26,
+  "rot": 0
+ },
+ {
+  "file": "07_small.png",
+  "text": "NO ENTRY",
+  "size": "small",
+  "text_px": 13,
+  "rot": 0
+ }
+]

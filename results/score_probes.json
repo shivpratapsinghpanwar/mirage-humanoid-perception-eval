@@ -1,0 +1,451 @@
+{
+ "null_frames": {
+  "black": {
+   "mirage": {
+    "objects": [
+     "black square 0.42"
+    ],
+    "text": [],
+    "scene": {
+     "background": "white",
+     "style": "minimalist"
+    },
+    "reasoning": "lang: en | black square centered on white | squares are geometric shapes with four equal sides | minimalist style uses few shapes | cannot know purpose or context"
+   },
+   "yolo": {
+    "objects": []
+   }
+  },
+  "gradient": {
+   "mirage": {
+    "objects": [
+     "vertical stripes 0.48",
+     "vertical stripes 0.40"
+    ],
+    "text": [],
+    "scene": {
+     "background": "white",
+     "style": "abstract"
+    },
+    "reasoning": "lang: en | black vertical stripes, white vertical stripes | vertical stripes run along a surface | abstract images have no recognizable objects | no text or numbers present | cannot know what the stripes represent"
+   },
+   "yolo": {
+    "objects": []
+   }
+  },
+  "gray": {
+   "mirage": {
+    "objects": [],
+    "text": [
+     "."
+    ],
+    "scene": {},
+    "reasoning": "lang: en | gray and and and and and and f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f f"
+   },
+   "yolo": {
+    "objects": []
+   }
+  },
+  "noise": {
+   "mirage": {
+    "objects": [
+     "surface 0.74"
+    ],
+    "text": [],
+    "scene": {
+     "background": "blue",
+     "style": "abstract"
+    },
+    "reasoning": "lang: en | blue textured surface filling the frame | blue textured surfaces are abstract backgrounds, not objects | no text or scale is present | what the surface belongs to cannot be known"
+   },
+   "yolo": {
+    "objects": [
+     "dog 0.35"
+    ]
+   }
+  },
+  "wall": {
+   "mirage": {
+    "objects": [
+     "surface 0.58"
+    ],
+    "text": [],
+    "scene": {
+     "background": "beige",
+     "style": "abstract"
+    },
+    "reasoning": "lang: en | beige textured surface filling the frame | beige texture suggests fabric or paper | no object or scale is visible | material and purpose cannot be determined"
+   },
+   "yolo": {
+    "objects": []
+   }
+  },
+  "white": {
+   "mirage": {
+    "objects": [
+     "hexagonal logo 0.37"
+    ],
+    "text": [],
+    "scene": {
+     "background": "white",
+     "style": "minimalist"
+    },
+    "reasoning": "lang: en | light gray hexagonal logo on white | hexagon logos are brand marks, not objects | minimalist style uses simple shapes | cannot know the brand name"
+   },
+   "yolo": {
+    "objects": []
+   }
+  }
+ },
+ "stability": {
+  "mirage": {
+   "pan2": {
+    "box_persist_%": 58.7,
+    "same_label_persist_%": 46.0,
+    "new_boxes_%_of_variant": 42.2,
+    "person_presence_flips": "0/8"
+   },
+   "pan5": {
+    "box_persist_%": 43.5,
+    "same_label_persist_%": 27.4,
+    "new_boxes_%_of_variant": 64.9,
+    "person_presence_flips": "0/8"
+   },
+   "dark75": {
+    "box_persist_%": 61.9,
+    "same_label_persist_%": 52.4,
+    "new_boxes_%_of_variant": 43.5,
+    "person_presence_flips": "0/8"
+   },
+   "bright125": {
+    "box_persist_%": 61.9,
+    "same_label_persist_%": 44.4,
+    "new_boxes_%_of_variant": 38.1,
+    "person_presence_flips": "0/8"
+   },
+   "blur": {
+    "box_persist_%": 58.7,
+    "same_label_persist_%": 34.9,
+    "new_boxes_%_of_variant": 47.1,
+    "person_presence_flips": "0/8"
+   },
+   "jpeg35": {
+    "box_persist_%": 61.9,
+    "same_label_persist_%": 41.3,
+    "new_boxes_%_of_variant": 50.0,
+    "person_presence_flips": "0/8"
+   },
+   "lowres": {
+    "box_persist_%": 54.0,
+    "same_label_persist_%": 27.0,
+    "new_boxes_%_of_variant": 46.9,
+    "person_presence_flips": "0/8"
+   }
+  },
+  "yolo": {
+   "pan2": {
+    "box_persist_%": 90.0,
+    "same_label_persist_%": 90.0,
+    "new_boxes_%_of_variant": 16.0,
+    "person_presence_flips": "0/8"
+   },
+   "pan5": {
+    "box_persist_%": 94.3,
+    "same_label_persist_%": 94.3,
+    "new_boxes_%_of_variant": 4.3,
+    "person_presence_flips": "0/8"
+   },
+   "dark75": {
+    "box_persist_%": 97.2,
+    "same_label_persist_%": 97.2,
+    "new_boxes_%_of_variant": 2.8,
+    "person_presence_flips": "0/8"
+   },
+   "bright125": {
+    "box_persist_%": 97.2,
+    "same_label_persist_%": 97.2,
+    "new_boxes_%_of_variant": 2.8,
+    "person_presence_flips": "0/8"
+   },
+   "blur": {
+    "box_persist_%": 73.6,
+    "same_label_persist_%": 73.6,
+    "new_boxes_%_of_variant": 10.2,
+    "person_presence_flips": "0/8"
+   },
+   "jpeg35": {
+    "box_persist_%": 80.6,
+    "same_label_persist_%": 80.6,
+    "new_boxes_%_of_variant": 6.5,
+    "person_presence_flips": "0/8"
+   },
+   "lowres": {
+    "box_persist_%": 72.2,
+    "same_label_persist_%": 72.2,
+    "new_boxes_%_of_variant": 14.8,
+    "person_presence_flips": "0/8"
+   }
+  }
+ },
+ "ocr": {
+  "large": {
+   "n": 8,
+   "exact_%": 100.0,
+   "mean_CER": 0.0
+  },
+  "large_rot": {
+   "n": 8,
+   "exact_%": 87.5,
+   "mean_CER": 0.021
+  },
+  "medium": {
+   "n": 8,
+   "exact_%": 100.0,
+   "mean_CER": 0.0
+  },
+  "small": {
+   "n": 8,
+   "exact_%": 87.5,
+   "mean_CER": 0.042
+  }
+ },
+ "ocr_reads": [
+  {
+   "file": "00_large.png",
+   "gt": "EXIT",
+   "read": [
+    "EXIT"
+   ]
+  },
+  {
+   "file": "00_large_rot15.png",
+   "gt": "EXIT",
+   "read": [
+    "EXIT"
+   ]
+  },
+  {
+   "file": "00_medium.png",
+   "gt": "EXIT",
+   "read": [
+    "EXIT"
+   ]
+  },
+  {
+   "file": "00_small.png",
+   "gt": "EXIT",
+   "read": [
+    "EXIT"
+   ]
+  },
+  {
+   "file": "01_large.png",
+   "gt": "PUSH",
+   "read": [
+    "PUSH"
+   ]
+  },
+  {
+   "file": "01_large_rot15.png",
+   "gt": "PUSH",
+   "read": [
+    "PUSH"
+   ]
+  },
+  {
+   "file": "01_medium.png",
+   "gt": "PUSH",
+   "read": [
+    "PUSH"
+   ]
+  },
+  {
+   "file": "01_small.png",
+   "gt": "PUSH",
+   "read": [
+    "PUSH"
+   ]
+  },
+  {
+   "file": "02_large.png",
+   "gt": "ROOM 204",
+   "read": [
+    "ROOM",
+    "ROOM 204"
+   ]
+  },
+  {
+   "file": "02_large_rot15.png",
+   "gt": "ROOM 204",
+   "read": [
+    "204",
+    "ROOM 204"
+   ]
+  },
+  {
+   "file": "02_medium.png",
+   "gt": "ROOM 204",
+   "read": [
+    "ROOM 204"
+   ]
+  },
+  {
+   "file": "02_small.png",
+   "gt": "ROOM 204",
+   "read": [
+    "ROOM 204"
+   ]
+  },
+  {
+   "file": "03_large.png",
+   "gt": "WET FLOOR",
+   "read": [
+    "WET",
+    "WET FLOOR"
+   ]
+  },
+  {
+   "file": "03_large_rot15.png",
+   "gt": "WET FLOOR",
+   "read": [
+    "WET FLOOR",
+    "FLOOR",
+    "WET"
+   ]
+  },
+  {
+   "file": "03_medium.png",
+   "gt": "WET FLOOR",
+   "read": [
+    "WET FLOOR"
+   ]
+  },
+  {
+   "file": "03_small.png",
+   "gt": "WET FLOOR",
+   "read": [
+    "WET",
+    "WET FLOOR"
+   ]
+  },
+  {
+   "file": "04_large.png",
+   "gt": "DANGER",
+   "read": [
+    "DANGER"
+   ]
+  },
+  {
+   "file": "04_large_rot15.png",
+   "gt": "DANGER",
+   "read": [
+    "DANGER"
+   ]
+  },
+  {
+   "file": "04_medium.png",
+   "gt": "DANGER",
+   "read": [
+    "DANGER"
+   ]
+  },
+  {
+   "file": "04_small.png",
+   "gt": "DANGER",
+   "read": [
+    "DANGER"
+   ]
+  },
+  {
+   "file": "05_large.png",
+   "gt": "KITCHEN",
+   "read": [
+    "KITCHEN"
+   ]
+  },
+  {
+   "file": "05_large_rot15.png",
+   "gt": "KITCHEN",
+   "read": [
+    "KITCHEN"
+   ]
+  },
+  {
+   "file": "05_medium.png",
+   "gt": "KITCHEN",
+   "read": [
+    "KITCHEN"
+   ]
+  },
+  {
+   "file": "05_small.png",
+   "gt": "KITCHEN",
+   "read": [
+    "KITCHEN"
+   ]
+  },
+  {
+   "file": "06_large.png",
+   "gt": "LIFT 3",
+   "read": [
+    "LIFT",
+    "LIFT 3",
+    "3"
+   ]
+  },
+  {
+   "file": "06_large_rot15.png",
+   "gt": "LIFT 3",
+   "read": [
+    "3",
+    "LIFT",
+    "LIFT S"
+   ]
+  },
+  {
+   "file": "06_medium.png",
+   "gt": "LIFT 3",
+   "read": [
+    "LIFT 3"
+   ]
+  },
+  {
+   "file": "06_small.png",
+   "gt": "LIFT 3",
+   "read": [
+    "LIFT"
+   ]
+  },
+  {
+   "file": "07_large.png",
+   "gt": "NO ENTRY",
+   "read": [
+    "NO ENTRY",
+    "ENTRY"
+   ]
+  },
+  {
+   "file": "07_large_rot15.png",
+   "gt": "NO ENTRY",
+   "read": [
+    "NO ENTRY",
+    "ENTRY",
+    "NO"
+   ]
+  },
+  {
+   "file": "07_medium.png",
+   "gt": "NO ENTRY",
+   "read": [
+    "NO ENTRY"
+   ]
+  },
+  {
+   "file": "07_small.png",
+   "gt": "NO ENTRY",
+   "read": [
+    "NO ENTRY"
+   ]
+  }
+ ]
+}

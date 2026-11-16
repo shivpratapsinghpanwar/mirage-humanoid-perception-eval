@@ -1,0 +1,46 @@
+{
+ "person": {
+  "n": 251,
+  "mean_mask_IoU": 0.704,
+  "median": 0.738,
+  "share_>=0.75_%": 45.4
+ },
+ "large": {
+  "n": 383,
+  "mean_mask_IoU": 0.724,
+  "median": 0.794,
+  "share_>=0.75_%": 59.5
+ },
+ "all": {
+  "n": 783,
+  "mean_mask_IoU": 0.699,
+  "median": 0.737,
+  "share_>=0.75_%": 47.8
+ },
+ "household": {
+  "n": 251,
+  "mean_mask_IoU": 0.673,
+  "median": 0.725,
+  "share_>=0.75_%": 46.2
+ },
+ "medium": {
+  "n": 282,
+  "mean_mask_IoU": 0.696,
+  "median": 0.724,
+  "share_>=0.75_%": 44.0
+ },
+ "small": {
+  "n": 118,
+  "mean_mask_IoU": 0.625,
+  "median": 0.627,
+  "share_>=0.75_%": 18.6
+ },
+ "other": {
+  "n": 281,
+  "mean_mask_IoU": 0.718,
+  "median": 0.757,
+  "share_>=0.75_%": 51.2
+ },
+ "matched_without_mask": 0,
+ "mean_box_IoU_of_matched": 0.759
+}

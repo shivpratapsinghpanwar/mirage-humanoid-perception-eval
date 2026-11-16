@@ -1,0 +1,193 @@
+{
+ "machine": "Intel i5-11320H (4C/8T) laptop CPU, Windows 11, 2-bit .cact weights",
+ "rss_mb": {
+  "before_load": 37.363712,
+  "after_load": 123.424768,
+  "peak_after_runs": 194.064384
+ },
+ "modes": {
+  "default (full describe)": {
+   "median_ms": 1494.7696500003076,
+   "p90_ms": 1783.24689999954,
+   "min_ms": 1051.6704000001482,
+   "mean_objects": 10.375,
+   "keys": [
+    "scene",
+    "objects",
+    "regions",
+    "text",
+    "relations",
+    "events",
+    "reasoning"
+   ],
+   "opts": {}
+  },
+  "objects only": {
+   "median_ms": 1488.4124499999416,
+   "p90_ms": 1693.8222999997379,
+   "min_ms": 1274.1931999998997,
+   "mean_objects": 10.375,
+   "keys": [
+    "objects"
+   ],
+   "opts": {
+    "sections": [
+     "objects"
+    ]
+   }
+  },
+  "objects, bbox+score only": {
+   "median_ms": 1393.485750000309,
+   "p90_ms": 1556.3872000002448,
+   "min_ms": 1216.946999999891,
+   "mean_objects": 10.375,
+   "keys": [
+    "objects"
+   ],
+   "opts": {
+    "sections": [
+     "objects"
+    ],
+    "fields": [
+     "bbox",
+     "score"
+    ]
+   }
+  },
+  "objects, conf=0.2": {
+   "median_ms": 1518.7474499998643,
+   "p90_ms": 1664.1211999994994,
+   "min_ms": 1321.023100000275,
+   "mean_objects": 11.375,
+   "keys": [
+    "objects"
+   ],
+   "opts": {
+    "sections": [
+     "objects"
+    ],
+    "conf": 0.2
+   }
+  },
+  "objects, conf=0.5": {
+   "median_ms": 1333.8136000002123,
+   "p90_ms": 1425.8129999998346,
+   "min_ms": 1197.7595999996993,
+   "mean_objects": 4.75,
+   "keys": [
+    "objects"
+   ],
+   "opts": {
+    "sections": [
+     "objects"
+    ],
+    "conf": 0.5
+   }
+  },
+  "text only": {
+   "median_ms": 1390.0846999995338,
+   "p90_ms": 1474.7007999994821,
+   "min_ms": 1265.24419999987,
+   "mean_objects": 0,
+   "keys": [
+    "text"
+   ],
+   "opts": {
+    "sections": [
+     "text"
+    ]
+   }
+  },
+  "full, max_objects=8": {
+   "median_ms": 1365.5389999998988,
+   "p90_ms": 1496.9048999992083,
+   "min_ms": 1261.4504000002853,
+   "mean_objects": 4.5,
+   "keys": [
+    "scene",
+    "objects",
+    "regions",
+    "text",
+    "relations",
+    "events",
+    "reasoning"
+   ],
+   "opts": {
+    "max_objects": 8
+   }
+  },
+  "extract(person_present yes/no)": {
+   "median_ms": 1099.3130500000916,
+   "p90_ms": 1174.7667999998157,
+   "min_ms": 1035.3294999995342,
+   "mean_objects": 0,
+   "keys": [
+    "form"
+   ],
+   "opts": {
+    "form": {
+     "person_present": {
+      "enum": [
+       "yes",
+       "no"
+      ]
+     }
+    }
+   }
+  }
+ },
+ "bad_option": [
+  {
+   "opts": {
+    "not_an_option": 1
+   },
+   "result": "accepted",
+   "keys": [
+    "scene",
+    "objects",
+    "regions",
+    "text",
+    "relations",
+    "events",
+    "reasoning"
+   ]
+  },
+  {
+   "opts": {
+    "sections": [
+     "nonsense"
+    ]
+   },
+   "result": "error: invalid options: sections has an unknown name nonsense"
+  }
+ ],
+ "deterministic_same_input": true,
+ "threads": {
+  "1": {
+   "full": 1803.5256500002106,
+   "objects": 1882.0302499998434
+  },
+  "2": {
+   "full": 1935.5491999999686,
+   "objects": 1868.042900000546
+  },
+  "4": {
+   "full": 2087.0973500004766,
+   "objects": 1811.3924999997835
+  },
+  "8": {
+   "full": 1937.1108499999536,
+   "objects": 1898.7544000001435
+  }
+ },
+ "input_width_ms": {
+  "320": 1955.1002999996854,
+  "640": 1610.4120999998486,
+  "1280": 1611.4575999999943,
+  "1920": 1570.0698000000557
+ },
+ "nan_json_sanitized": {
+  "calls": 184,
+  "sanitized": 6
+ }
+}

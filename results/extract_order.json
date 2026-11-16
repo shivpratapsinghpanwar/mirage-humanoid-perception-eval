@@ -1,0 +1,525 @@
+{
+ "summary": {
+  "dog_first_answers": {
+   "dog->dog": 15,
+   "cat->dog": 15
+  },
+  "cat_first_answers": {
+   "dog->dog": 15,
+   "cat->dog": 15
+  },
+  "mean_P(dog)_dog_first": {
+   "dog_imgs": 0.711,
+   "cat_imgs": 0.657
+  },
+  "mean_P(dog)_cat_first": {
+   "dog_imgs": 0.845,
+   "cat_imgs": 0.824
+  },
+  "describe_names_correct_animal": 19,
+  "describe_answers": {
+   "dog->dog": 9,
+   "dog->cat": 3,
+   "dog->neither": 3,
+   "cat->cat": 10,
+   "cat->dog": 3,
+   "cat->neither": 2
+  },
+  "n": 30
+ },
+ "rows": [
+  {
+   "id": 297830,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.7422115551441626,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8644174378808717,
+   "describe_animals": "dog",
+   "describe_names": [
+    "window",
+    "tongue",
+    "wall",
+    "door",
+    "dog",
+    "floor"
+   ]
+  },
+  {
+   "id": 367195,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.8285905549070476,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.9094856590019532,
+   "describe_animals": "cat",
+   "describe_names": [
+    "wooden table",
+    "person",
+    "cat",
+    "fur",
+    "fur"
+   ]
+  },
+  {
+   "id": 532575,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.6655250032278439,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8385416867355535,
+   "describe_animals": "dog",
+   "describe_names": [
+    "boat",
+    "hill",
+    "dog",
+    "boat",
+    "collar",
+    "water",
+    "boat",
+    "tag"
+   ]
+  },
+  {
+   "id": 60835,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.6631658449264519,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8626836506685597,
+   "describe_animals": "neither",
+   "describe_names": [
+    "cow",
+    "cow",
+    "cage",
+    "ground"
+   ]
+  },
+  {
+   "id": 482917,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.6568519117453877,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.7959918539361855,
+   "describe_animals": "dog",
+   "describe_names": [
+    "television",
+    "chair",
+    "wooden cabinet",
+    "wooden cabinet",
+    "puppy",
+    "wooden table",
+    "bed",
+    "puppy"
+   ]
+  },
+  {
+   "id": 292330,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.5017161876563457,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.7737865631081556,
+   "describe_animals": "dog",
+   "describe_names": [
+    "grass",
+    "dog",
+    "doghouse",
+    "path"
+   ]
+  },
+  {
+   "id": 131273,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.850349302100397,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.889713766645498,
+   "describe_animals": "dog",
+   "describe_names": [
+    "text",
+    "knob",
+    "seat",
+    "knob",
+    "seat",
+    "seat",
+    "dog",
+    "handle"
+   ]
+  },
+  {
+   "id": 236592,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.7474922329982568,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8881913360467064,
+   "describe_animals": "cat",
+   "describe_names": [
+    "wall",
+    "window",
+    "crowd",
+    "cat"
+   ]
+  },
+  {
+   "id": 181969,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.6298242410588605,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8342712057704631,
+   "describe_animals": "dog",
+   "describe_names": [
+    "paw",
+    "wooden floor",
+    "dog"
+   ]
+  },
+  {
+   "id": 377575,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.8128865016155531,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8610279107086278,
+   "describe_animals": "neither",
+   "describe_names": [
+    "sand",
+    "bear",
+    "bear",
+    "collar",
+    "tag"
+   ]
+  },
+  {
+   "id": 486479,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.8610803836470852,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.935852850659746,
+   "describe_animals": "dog",
+   "describe_names": [
+    "eye",
+    "puppy",
+    "shirt",
+    "nose",
+    "floor",
+    "person"
+   ]
+  },
+  {
+   "id": 554002,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.7439353480878231,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8667753074328052,
+   "describe_animals": "neither",
+   "describe_names": [
+    "handbag",
+    "belt",
+    "person",
+    "person",
+    "sneakers",
+    "person",
+    "person",
+    "person"
+   ]
+  },
+  {
+   "id": 255664,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.6804188867255011,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8408948150534458,
+   "describe_animals": "dog",
+   "describe_names": [
+    "grass",
+    "dog"
+   ]
+  },
+  {
+   "id": 309484,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.7464821794853884,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.7658862329205162,
+   "describe_animals": "dog",
+   "describe_names": [
+    "hand",
+    "toy car",
+    "toy car",
+    "puppy",
+    "person"
+   ]
+  },
+  {
+   "id": 549220,
+   "gt": "dog",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.5270301398764344,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.7460744572813159,
+   "describe_animals": "cat",
+   "describe_names": [
+    "person",
+    "person",
+    "red bag",
+    "white cat",
+    "wooden platform",
+    "blue mat"
+   ]
+  },
+  {
+   "id": 385205,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.5947398666511691,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.800035822138288,
+   "describe_animals": "cat",
+   "describe_names": [
+    "toy",
+    "cat",
+    "hand",
+    "blanket"
+   ]
+  },
+  {
+   "id": 125850,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.648271901922184,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8359095562640446,
+   "describe_animals": "cat",
+   "describe_names": [
+    "cat"
+   ]
+  },
+  {
+   "id": 4795,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.7554123476625667,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.907522283099884,
+   "describe_animals": "cat",
+   "describe_names": [
+    "window",
+    "screen",
+    "cable",
+    "laptop",
+    "laptop screen",
+    "cat",
+    "mouse",
+    "keyboard"
+   ]
+  },
+  {
+   "id": 515025,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.64024028627691,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.7869082411877586,
+   "describe_animals": "dog",
+   "describe_names": [
+    "building",
+    "tree",
+    "car",
+    "woman",
+    "cup",
+    "dog",
+    "dog bed"
+   ]
+  },
+  {
+   "id": 115885,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.7160501103367408,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.7917367583386309,
+   "describe_animals": "cat",
+   "describe_names": [
+    "light",
+    "cabinet",
+    "cat",
+    "laptop"
+   ]
+  },
+  {
+   "id": 245764,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.8272575894840334,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8838854748962275,
+   "describe_animals": "cat",
+   "describe_names": [
+    "sink",
+    "toilet paper",
+    "faucet",
+    "cat",
+    "toilet",
+    "toilet paper",
+    "toilet paper",
+    "floor"
+   ]
+  },
+  {
+   "id": 155291,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.5750653233149534,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.7961151170419183,
+   "describe_animals": "cat",
+   "describe_names": [
+    "wooden door",
+    "tree",
+    "tabby cat",
+    "wooden floor"
+   ]
+  },
+  {
+   "id": 107087,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.6001545908644677,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.789665142902035,
+   "describe_animals": "neither",
+   "describe_names": [
+    "grass",
+    "car seat"
+   ]
+  },
+  {
+   "id": 540928,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.7132239289753826,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.830547241606666,
+   "describe_animals": "neither",
+   "describe_names": [
+    "shoe lace",
+    "shoe lace",
+    "shoe",
+    "shoe",
+    "shoe",
+    "floor"
+   ]
+  },
+  {
+   "id": 227044,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.6186487026743273,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8031953390792146,
+   "describe_animals": "cat",
+   "describe_names": [
+    "bottle",
+    "bottle",
+    "bottle",
+    "bottle",
+    "bottle",
+    "faucet",
+    "cat",
+    "bathtub"
+   ]
+  },
+  {
+   "id": 89271,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.6477597353973364,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8454675724734837,
+   "describe_animals": "cat",
+   "describe_names": [
+    "hat",
+    "eye",
+    "cat",
+    "nose",
+    "mouth",
+    "shirt"
+   ]
+  },
+  {
+   "id": 533536,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.8687623130795638,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.9225608414814375,
+   "describe_animals": "dog",
+   "describe_names": [
+    "wooden wall",
+    "screen",
+    "wooden floor",
+    "television",
+    "wooden wall",
+    "red arrow",
+    "remote control",
+    "wooden floor"
+   ]
+  },
+  {
+   "id": 558073,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.5279300062095423,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.7832776087231423,
+   "describe_animals": "cat",
+   "describe_names": [
+    "cat",
+    "curtain",
+    "bathtub"
+   ]
+  },
+  {
+   "id": 49810,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.49626456662423934,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.8199128543790775,
+   "describe_animals": "dog",
+   "describe_names": [
+    "grass",
+    "fence",
+    "puppy",
+    "puppy"
+   ]
+  },
+  {
+   "id": 80666,
+   "gt": "cat",
+   "dog_first": "dog",
+   "p_dog_dog_first": 0.6194125018873244,
+   "cat_first": "dog",
+   "p_dog_cat_first": 0.7577647890416456,
+   "describe_animals": "cat",
+   "describe_names": [
+    "tree",
+    "tree",
+    "roof",
+    "house",
+    "house",
+    "fence",
+    "bush",
+    "bush"
+   ]
+  }
+ ]
+}

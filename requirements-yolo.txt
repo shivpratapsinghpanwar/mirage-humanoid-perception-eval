@@ -1,0 +1,5 @@
+# YOLO26n baseline environment (.venv-yolo), kept separate from Mirage's.
+# CPU-only torch: install with  --index-url https://download.pytorch.org/whl/cpu  (or use your own torch build)
+torch==2.15.0
+torchvision==0.29.2
+ultralytics==8.4.214
