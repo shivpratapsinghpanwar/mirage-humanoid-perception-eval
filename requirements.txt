@@ -3,3 +3,6 @@ cactus-compute==4.2.2
 numpy==2.5.5
 pillow==13.0.0
 psutil==7.2.2
+# figures and videos (eval/11_make_media.py)
+matplotlib==3.11.2
+imageio-ffmpeg==0.8.1

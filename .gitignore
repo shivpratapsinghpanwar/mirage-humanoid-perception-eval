@@ -8,10 +8,3 @@ __pycache__/
 *.pt
 *.cact
 results/yolo_weights/
-
-# COCO photos and anything drawn on them: the COCO Consortium does not own the image copyrights,
-# so they are not redistributed here. eval/06a_make_probes.py and eval/overlay*.py regenerate them.
-results/probes/stab/*.png
-results/probes/ocr/*.png
-results/audit/
-results/overlay_*.png

@@ -6,6 +6,13 @@ Mirage returns objects (boxes and masks), OCR text, relations, a scene summary a
 
 Not affiliated with Cactus Compute. All results were measured on one x86 laptop (details below). Corrections and results from other hardware are welcome.
 
+![COCO photo with ground truth, Mirage and YOLO26n boxes side by side](media/gallery/random_01_246963.jpg)
+*A random image from the 300-image test set: COCO ground truth (green), Mirage boxes and masks (blue), YOLO26n (orange). Mirage calls the motorcycles "bicycle", the riders "cyclist" and the stop sign just "sign".*
+
+**Watch:** [all 300 test images, side by side (5 min MP4)](media/video/coco300_gt_mirage_yolo.mp4) · [stability test, 8 scenes (1.5 min MP4)](media/video/stability_8_scenes.mp4) · [gallery](#gallery)
+
+The evaluation used **still images only**. The videos step through those images; Mirage was not tested on real video.
+
 ## Verdict
 
 **Not suitable as a humanoid's primary or safety-relevant perception, at least on the build tested.**
@@ -48,7 +55,11 @@ Class-agnostic recall at IoU 0.5 (did any predicted box overlap the GT object, r
 | Predictions per image | 10.1 | 4.95 |
 | Name correct on matched boxes | 58.7% automatic, **~65%** after a hand audit of 80 mismatches (many were synonyms) | 96.5% |
 
-Mirage's `score` field rates the box, not the name. Only 10% of its boxes scored 0.3–0.4 match a GT object, versus 81% of those scored 0.8–0.9.
+![Recall by object size, Mirage vs YOLO26n](media/charts/recall_by_size.png)
+
+Mirage's `score` field rates the box, not the name. Only 10% of its boxes scored 0.3–0.4 match a GT object, versus 81% of those scored 0.8–0.9. The chart leaves out the 29 boxes whose score was NaN.
+
+![Share of Mirage boxes matching a real object, by score](media/charts/score_calibration.png)
 
 ### People
 | | Mirage | YOLO26n |
@@ -58,7 +69,11 @@ Mirage's `score` field rates the box, not the name. Only 10% of its boxes scored
 | Image has a person → reports any person | 87.4% (94.1% when a large person is present) | 92.5% (97.0%) |
 | Reports a person in an image without one | 5.0% | 1.4% |
 
-Of 5 person/furniture mix-ups inspected visually, 2 were real errors: a clearly visible adult labelled as furniture ("chair", "couch").
+![People metrics, Mirage vs YOLO26n](media/charts/people.png)
+
+Of 5 person/furniture mix-ups inspected visually, 2 were real errors: a clearly visible adult labelled as furniture ("chair", "couch"). One of them is shown below (a selected example, not a random one):
+
+![Selected example: Mirage labels an adult as a couch](media/gallery/selected_73946.jpg)
 
 ### Masks (Mirage only)
 Mask IoU against COCO segmentation for 783 box-matched objects: mean **0.70**, median 0.74 (small objects 0.63; large 0.79 median). 48% of masks reach IoU ≥ 0.75.
@@ -78,6 +93,12 @@ Mask IoU against COCO segmentation for 783 box-matched objects: mean **0.70**, m
 
 Neither model flipped "a person is present" in any of these 8 scenes.
 
+![Same-label box persistence per perturbation](media/charts/stability.png)
+
+![Scene 156076 cycling through the original and 7 perturbations, Mirage vs YOLO26n](media/stability/156076.gif)
+
+*Scene #156076 (the first of the 8 by id) cycling through the original and the 7 perturbations. The GIFs for all 8 scenes are in [`media/stability/`](media/stability/), and all 8 are in [this video](media/video/stability_8_scenes.mp4).*
+
 ### Blank and noise frames (hallucination)
 6 synthetic frames: black, white, grey, gradient, noise, beige wall.
 - **Mirage** had 3 clear failures:
@@ -85,6 +106,8 @@ Neither model flipped "a person is present" in any of these 8 scenes.
   - It called the black frame a "black square on white".
   - The flat grey frame produced a runaway "and and … f f f" text loop.
 - **YOLO26n** had 1 failure: a "dog" on the noise frame.
+
+![All 6 blank and noise frames with what each model reported](media/null_frames.png)
 
 ### OCR on synthetic signs (`describe()`)
 8 sign texts ("EXIT", "WET FLOOR", "ROOM 204", …) pasted onto indoor photos. Exact reads:
@@ -95,6 +118,13 @@ Neither model flipped "a person is present" in any of these 8 scenes.
 | Medium | 100% |
 | Small | 87.5% |
 | Large, rotated 15° | 87.5% |
+
+<details>
+<summary>All 32 sign images with the describe() and extract() answers (tall image)</summary>
+
+![All 32 sign probes with describe() and extract() answers](media/ocr_signs.png)
+
+</details>
 
 ### `extract()` form filling
 Each field is a question, in the documented form syntax, e.g. `{"animal": {"enum": ["dog", "cat"]}}`.
@@ -111,6 +141,8 @@ Each field is a question, in the documented form syntax, e.g. `{"animal": {"enum
 | `describe()` on the same 30 photos (control) | right animal named in 19/30 |
 | `{"type": "string"}` field on the 32 signs | 0/32: returns the field name ("sign_text") or unrelated words ("simple", "business name") at ~0.1% probability |
 
+![extract() answers dog for all 30 dog and cat photos](media/extract_dog_cat.jpg)
+
 Depending on wording, `extract()` output was constant, inverted or abstained, while `describe()` saw the same images. Use `describe()` and post-process its output instead. Box-reference fields and ARM builds were not tested.
 
 ### Speed and resources (i5-11320H, warm median)
@@ -123,6 +155,8 @@ Depending on wording, `extract()` output was constant, inverted or abstained, wh
 | `extract()` one yes/no field | 1,099 ms | 1,175 ms |
 | COCO run, end to end incl. JPEG decode | 1,749 ms | 2,443 ms |
 | YOLO26n, same COCO run | 59 ms | 75 ms |
+
+![Latency per option mode, Mirage vs YOLO26n](media/charts/latency.png)
 
 - **Threads:** `set_threads(1…8)` made no difference (1.8–2.1 s in that run). The engine keeps 5–6 of 8 logical cores busy regardless, so it cannot be throttled to leave room for SLAM or control.
 - **Input size:** downscaling to 320–640 px wide before the call did not help (the model works on a fixed 512 px canvas).
@@ -149,6 +183,18 @@ r = m.describe(frame_rgb_uint8)             # numpy HxWx3 uint8, PIL image, byte
 ```
 - `bbox` is `[x1, y1, x2, y2]` on a 0–1000 scale per axis.
 - `mask` is a flat polygon on the same scale. `mask_format` can be `largest` (the default), `polygons`, `merged` or `bitmap`.
+
+## Gallery
+8 images drawn at random from the 300-image test set (seed 2026), not picked by hand. Green is COCO ground truth, blue is Mirage (boxes and masks), orange is YOLO26n. Every image is in [the 5-minute video](media/video/coco300_gt_mirage_yolo.mp4).
+
+| | |
+|---|---|
+| ![](media/gallery/random_02_416170.jpg) | ![](media/gallery/random_03_537827.jpg) |
+| ![](media/gallery/random_04_107851.jpg) | ![](media/gallery/random_05_335658.jpg) |
+| ![](media/gallery/random_06_17905.jpg) | ![](media/gallery/random_07_114907.jpg) |
+| ![](media/gallery/random_08_42528.jpg) | ![](media/gallery/random_01_246963.jpg) |
+
+All figures and videos are drawn from the saved outputs by `eval/11_make_media.py`; no model runs in that step.
 
 ## Compare your own model
 The scorers read one JSON file per image, so any detector can be added:
@@ -198,7 +244,12 @@ python eval/06c_score_probes.py results/probes results/probe_out_mirage my_probe
 
 On Windows, `eval/run_rest.ps1 -Val <dir> -Ann <file>` runs the probe and `extract()` steps in order.
 
-The probe images built on COCO photos are not included in this repo: the 64 stability images (8 scenes × original + 7 perturbations) and the 32 signs pasted onto indoor photos. The COCO Consortium does not own the image copyrights, so `06a_make_probes.py` regenerates them. The published sign images used Arial Bold; other systems fall back to DejaVu Sans Bold, or you can set `PROBE_FONT`. Their `meta.json` files and all model outputs are included.
+**Bundled data.**
+- **Photos:** the 329 COCO val2017 photos used here are in `data/coco_val2017/`. That covers the 300-image sample, the 30 dog/cat photos and the 3 sign backgrounds.
+- **Ground truth and licences:** `data/coco_val2017_used.json` has the ground-truth boxes and each photo's licence and Flickr URL.
+- **Probe images:** every probe image is in `results/probes/`.
+- **Rerunning:** this is enough to run any model on exactly the same images and score it. The scripts that draw the samples (`04_coco_run.py`, `06a_make_probes.py`, `06b`, `06d`) still expect the full val2017 folder and `instances_val2017.json`, because they select images from the whole set.
+- **Fonts:** the sign images were drawn with Arial Bold. If you regenerate them on a system without it, `06a_make_probes.py` falls back to DejaVu Sans Bold, or set `PROBE_FONT`.
 
 ## Repo layout
 | Path | Contents |
@@ -208,15 +259,24 @@ The probe images built on COCO photos are not included in this repo: the 64 stab
 | `eval/run_dir.py` | Run Mirage or YOLO over a folder, saving one JSON per image |
 | `eval/overlay*.py`, `08_relations_dump.py`, `09_label_audit.py`, `show_json.py` | Manual review aids |
 | `eval/debug_raw.py`, `probe_extract.py`, `probe_boxref.py` | Small probes of the raw API |
+| `eval/10_bundle_coco.py`, `eval/11_make_media.py` | Copy the used COCO photos with their licences; draw all figures and videos |
+| `data/coco_val2017/`, `data/coco_val2017_used.json` | The 329 COCO photos used, with ground truth and per-photo licence |
+| `media/` | Charts, gallery, stability GIFs, probe grids and the two MP4s |
 | `results/score_*.json`, `mask_iou_mirage.json`, `extract_*.json`, `options_latency.json` | Scored results |
 | `results/coco_mirage/`, `results/coco_yolo26n/` | Raw per-image outputs on the 300 COCO images |
-| `results/probes/`, `results/probe_out_*/` | Probe definitions (`meta.json`), synthetic null frames, raw outputs |
+| `results/probes/`, `results/probe_out_*/` | Probe images (blank frames, stability variants, signs) with `meta.json`, and raw outputs |
+| `results/overlay_*.png`, `results/audit/` | Early overlays and the person/furniture audit images |
 
 ## Not tested
 - Robot-eye (egocentric) views, real video, and real-world signs.
 - ARM boards (Jetson, Raspberry Pi, phones), where the vendor's speed figures come from.
 - `extract()` box-reference fields.
 - Other small VLMs (e.g. Moondream 2, Gemma 4 E2B, LFM2.5-VL-450M) in the same "scene describer" role.
+
+## License
+- **Code, results and figures:** [MIT](LICENSE) © 2026 Shivpratap Singh Panwar.
+- **COCO photos** (`data/coco_val2017/`, and the probe images and figures built from them): each photo keeps its own Flickr licence, listed per photo in `data/coco_val2017_used.json`. Several are non-commercial or no-derivatives licences.
+- **COCO annotations:** CC BY 4.0, © COCO Consortium.
 
 ## References
 - [Mirage model card](https://huggingface.co/Cactus-Compute/mirage) · [release blog](https://cactuscompute.com/blog/mirage) · [structured perception](https://cactuscompute.com/blog/structured-perception) · [instance segmentation](https://cactuscompute.com/blog/instance-segmentation) · [OCR decoding](https://cactuscompute.com/blog/ocr-decoding) · [Python docs](https://cactuscompute.com/blog/needle-python-docs)
