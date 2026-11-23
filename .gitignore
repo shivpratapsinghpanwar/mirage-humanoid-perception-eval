@@ -11,3 +11,6 @@ __pycache__/
 *.safetensors
 results/yolo_weights/
 weights/
+
+# Local working notes (not published)
+STATUS.md
