@@ -6,6 +6,12 @@ Mirage returns objects (boxes and masks), OCR text, relations, a scene summary a
 
 Not affiliated with Cactus Compute. All results were measured on one x86 laptop (details below). Corrections and results from other hardware are welcome.
 
+| Where | What |
+|---|---|
+| **GitHub (this repo)** | Code, scripts, full write-up, issues |
+| **Hugging Face:** [shivpratapsingh/mirage-humanoid-perception-benchmark](https://huggingface.co/datasets/shivpratapsingh/mirage-humanoid-perception-benchmark) | Browsable table of the 300 test images (photo, ground truth, Mirage and YOLO26n outputs), loadable with `datasets`, plus all files |
+| **Kaggle:** [sspanwar/mirage-humanoid-perception-benchmark](https://www.kaggle.com/datasets/sspanwar/mirage-humanoid-perception-benchmark) | Same files as a Kaggle dataset |
+
 ![COCO photo with ground truth, Mirage and YOLO26n boxes side by side](media/gallery/random_01_246963.jpg)
 *A random image from the 300-image test set: COCO ground truth (green), Mirage boxes and masks (blue), YOLO26n (orange). Mirage calls the motorcycles "bicycle", the riders "cyclist" and the stop sign just "sign".*
 
