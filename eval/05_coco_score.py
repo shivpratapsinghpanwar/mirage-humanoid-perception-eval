@@ -1,9 +1,11 @@
 """Score detector outputs against COCO val2017 GT (humanoid-relevant metrics, not mAP).
 
-Usage: python 05_coco_score.py <instances_val2017.json> <pred_dir> [--names]
+Usage: python 05_coco_score.py <gt.json> <pred_dir> [--names] [--min-score T] [--out summary.json]
+<gt.json> is either COCO's instances_val2017.json or this repo's data/coco_val2017_used.json.
 pred_dir holds <image_id>.json with {"objects":[{"name","bbox":[x1,y1,x2,y2] on 0-1000 per-axis
-scale,"score"}]} and _sample_ids.json. Prints a JSON summary; --names dumps the names a detector
-used for boxes that overlap GT persons (to audit the person-synonym list).
+scale,"score"}]} and _sample_ids.json (falls back to results/coco_mirage/_sample_ids.json).
+--min-score drops predictions below T (score at a model's documented default from low-threshold
+raw outputs). --names dumps the names used on boxes that overlap GT persons.
 """
 import collections
 import json
@@ -13,15 +15,29 @@ import sys
 
 ann_path, pred_dir = sys.argv[1], sys.argv[2]
 dump_names = "--names" in sys.argv
+min_score = float(sys.argv[sys.argv.index("--min-score") + 1]) if "--min-score" in sys.argv else None
+out_path = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else None
 
-coco = json.load(open(ann_path, encoding="utf-8"))
-cats = {c["id"]: c["name"] for c in coco["categories"]}
-imgs = {i["id"]: i for i in coco["images"]}
+gt_src = json.load(open(ann_path, encoding="utf-8"))
 gt_by_img = collections.defaultdict(list)
-for a in coco["annotations"]:
-    if not a.get("iscrowd"):
-        gt_by_img[a["image_id"]].append(a)
-sample = json.load(open(os.path.join(pred_dir, "_sample_ids.json")))
+if isinstance(gt_src.get("images"), dict):  # compact repo file: {"images": {id: {..., "annotations": [...]}}}
+    cats = {}
+    imgs = {int(k): v for k, v in gt_src["images"].items()}
+    for iid, im in imgs.items():
+        for a in im["annotations"]:
+            if not a.get("iscrowd"):
+                gt_by_img[iid].append({"name": a["category"], "bbox": a["bbox_xywh"], "area": a["area"]})
+else:  # COCO instances file
+    cats = {c["id"]: c["name"] for c in gt_src["categories"]}
+    imgs = {i["id"]: i for i in gt_src["images"]}
+    for a in gt_src["annotations"]:
+        if not a.get("iscrowd"):
+            gt_by_img[a["image_id"]].append({"name": cats[a["category_id"]], "bbox": a["bbox"], "area": a["area"]})
+del gt_src
+sid = os.path.join(pred_dir, "_sample_ids.json")
+if not os.path.exists(sid):
+    sid = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "results", "coco_mirage", "_sample_ids.json")
+sample = json.load(open(sid))
 
 # Names treated as "person". Fixed list, audited with --names; reported alongside results.
 PERSON = {"person", "man", "woman", "boy", "girl", "child", "kid", "baby", "people", "human",
@@ -118,12 +134,14 @@ for iid in sample:
         b = o.get("bbox")
         if not b or len(b) != 4:
             continue
+        if min_score is not None and isinstance(o.get("score"), (int, float)) and o["score"] < min_score:
+            continue
         preds.append({"name": o.get("name", ""), "score": o.get("score") or 0.0,
                       "box": [b[0] / 1000 * W, b[1] / 1000 * H, b[2] / 1000 * W, b[3] / 1000 * H]})
     gts = []
     for a in gt_by_img[iid]:
         x, y, w, h = a["bbox"]
-        gts.append({"name": cats[a["category_id"]], "box": [x, y, x + w, y + h], "area": a["area"]})
+        gts.append({"name": a["name"], "box": [x, y, x + w, y + h], "area": a["area"]})
     S["preds"] += len(preds)
     S["gts"] += len(gts)
 
@@ -131,6 +149,7 @@ for iid in sample:
     m = match(preds, gts)
     matched_g = {gi: pi for pi, gi, _ in m}
     matched_p = {pi for pi, _, _ in m}
+    S["matched_preds"] += len(matched_p)
     for gi, g in enumerate(gts):
         sb = size_bucket(g["area"])
         grp = "person" if g["name"] == "person" else ("household" if g["name"] in HOUSEHOLD else "other")
@@ -190,6 +209,8 @@ def pct(a, b):
 summary = {
     "images": n_imgs, "gt_boxes": S["gts"], "pred_boxes": S["preds"],
     "preds_per_image": round(S["preds"] / max(n_imgs, 1), 2),
+    "min_score": min_score,
+    "class_agnostic_precision@0.5_%": pct("matched_preds", "preds"),
     "class_agnostic_recall@0.5": {k: pct(f"hit_{k}", f"gt_{k}") for k in
                                   ("all", "small", "medium", "large", "person", "household", "other")},
     "gt_counts": {k: S[f"gt_{k}"] for k in ("all", "small", "medium", "large", "person", "household", "other")},
@@ -215,4 +236,7 @@ summary = {
 }
 if dump_names:
     summary["names_used_on_gt_persons"] = names_on_person.most_common(40)
+if out_path:
+    with open(out_path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(summary, indent=1) + "\n")
 print(json.dumps(summary, indent=1))

@@ -1,10 +1,13 @@
 # Environments and caches
-.venv/
-.venv-yolo/
+.venv*/
 __pycache__/
 *.pyc
 
 # Third-party weights (download them yourself; see README)
 *.pt
+*.pth
+*.onnx
 *.cact
+*.safetensors
 results/yolo_weights/
+weights/

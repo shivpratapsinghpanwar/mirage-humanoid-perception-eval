@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this benchmark or its results, please cite it as below."
+title: "Mirage humanoid perception benchmark: small detectors and VLMs on COCO-300, probes and visual questions"
+abstract: >-
+  An open, reproducible benchmark of small on-device perception models for a humanoid robot's
+  perception layer: Cactus Mirage, YOLO26n, RF-DETR, D-FINE, RTMDet, OWLv2, Florence-2 and small
+  vision-language models, on the same 300 COCO val2017 images, blank-frame and stability probes,
+  synthetic signs and a frozen set of 254 visual questions, with laptop CPU/GPU latency.
+type: software
+authors:
+  - given-names: Shivpratap Singh
+    family-names: Panwar
+    alias: shivpratapsinghpanwar
+repository-code: "https://github.com/shivpratapsinghpanwar/mirage-humanoid-perception-eval"
+url: "https://huggingface.co/datasets/shivpratapsingh/mirage-humanoid-perception-benchmark"
+license: MIT
+keywords:
+  - humanoid robotics
+  - perception
+  - object detection
+  - vision-language models
+  - on-device
+  - benchmark
+  - COCO
+date-released: "2026-11-23"

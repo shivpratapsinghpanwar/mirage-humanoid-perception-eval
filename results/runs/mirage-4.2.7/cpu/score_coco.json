@@ -1,0 +1,213 @@
+{
+ "images": 300,
+ "gt_boxes": 2287,
+ "pred_boxes": 3024,
+ "preds_per_image": 10.08,
+ "min_score": null,
+ "class_agnostic_precision@0.5_%": 26.1,
+ "class_agnostic_recall@0.5": {
+  "all": 34.5,
+  "small": 12.5,
+  "medium": 36.3,
+  "large": 69.7,
+  "person": 37.6,
+  "household": 28.7,
+  "other": 38.6
+ },
+ "gt_counts": {
+  "all": 2287,
+  "small": 931,
+  "medium": 812,
+  "large": 544,
+  "person": 671,
+  "household": 867,
+  "other": 749
+ },
+ "label_agreement_on_matched_%": {
+  "all": 58.9,
+  "person": 86.9,
+  "household": 45.0,
+  "other": 46.4
+ },
+ "person": {
+  "instance_recall@0.5_%": 33.8,
+  "instance_precision@0.5_%": 54.3,
+  "recall_by_size_%": {
+   "small": 7.2,
+   "medium": 36.1,
+   "large": 70.0
+  },
+  "gt_by_size": {
+   "small": 264,
+   "medium": 227,
+   "large": 180
+  },
+  "image_level_recall_%": 86.8,
+  "image_level_recall_large_person_%": 93.1,
+  "image_false_alarm_rate_%": 3.5,
+  "images_with_person": 159,
+  "images_without_person": 141
+ },
+ "score_calibration (bin: n_preds, %matching_any_GT@0.5)": {
+  "0.3-0.4": [
+   1203,
+   10.1
+  ],
+  "0.4-0.5": [
+   882,
+   20.6
+  ],
+  "0.5-0.6": [
+   533,
+   43.5
+  ],
+  "0.6-0.7": [
+   243,
+   57.6
+  ],
+  "0.7-0.8": [
+   119,
+   66.4
+  ],
+  "0.8-0.9": [
+   43,
+   81.4
+  ],
+  "0.9-1.0": [
+   1,
+   100.0
+  ]
+ },
+ "latency_ms": {
+  "median": 1268.3114999999816,
+  "p90": 2070.9914999997636
+ },
+ "run_errors": 0,
+ "top_label_confusions(gt->pred)": [
+  [
+   "cake",
+   "cupcake",
+   6
+  ],
+  [
+   "orange",
+   "peppers",
+   6
+  ],
+  [
+   "person",
+   "hand",
+   5
+  ],
+  [
+   "bus",
+   "car",
+   5
+  ],
+  [
+   "cup",
+   "bottle",
+   4
+  ],
+  [
+   "cake",
+   "chocolate chip cookie",
+   4
+  ],
+  [
+   "apple",
+   "peppers",
+   4
+  ],
+  [
+   "cup",
+   "wine glass",
+   3
+  ],
+  [
+   "person",
+   "chair",
+   3
+  ],
+  [
+   "dog",
+   "cat",
+   3
+  ],
+  [
+   "traffic light",
+   "street lamp",
+   3
+  ],
+  [
+   "cow",
+   "horse",
+   3
+  ],
+  [
+   "cake",
+   "plate",
+   3
+  ],
+  [
+   "traffic light",
+   "metal pole",
+   3
+  ],
+  [
+   "chair",
+   "person",
+   3
+  ],
+  [
+   "truck",
+   "car",
+   3
+  ],
+  [
+   "dining table",
+   "plate",
+   3
+  ],
+  [
+   "sheep",
+   "elephant",
+   3
+  ],
+  [
+   "person",
+   "musician",
+   3
+  ],
+  [
+   "bed",
+   "bedding",
+   2
+  ],
+  [
+   "bird",
+   "duck",
+   2
+  ],
+  [
+   "bed",
+   "pillow",
+   2
+  ],
+  [
+   "pizza",
+   "bread",
+   2
+  ],
+  [
+   "person",
+   "duck",
+   2
+  ],
+  [
+   "tv",
+   "window",
+   2
+  ]
+ ]
+}

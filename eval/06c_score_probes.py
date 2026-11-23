@@ -1,15 +1,23 @@
 """Score probe runs: hallucination on null frames, stability under perturbations, OCR.
 
 Usage: python 06c_score_probes.py <probe_dir> <mirage_out_root> [yolo_out_root]
-  out roots contain null/, stab/, ocr/ subfolders of <stem>.json
+       python 06c_score_probes.py <probe_dir> <tag>=<out_root> [<tag>=<out_root> ...]
+  out roots contain null/, stab/, ocr/ subfolders of <stem>.json. OCR is scored for the tag "mirage"
+  (describe() text output) only. --min-score T ignores boxes scored below T (null and stability).
 """
 import collections
 import json
 import os
 import sys
 
-probe_dir, mroot = sys.argv[1], sys.argv[2]
-yroot = sys.argv[3] if len(sys.argv) > 3 else None
+probe_dir = sys.argv[1]
+MIN = float(sys.argv[sys.argv.index("--min-score") + 1]) if "--min-score" in sys.argv else None
+_args = [x for k, x in enumerate(sys.argv[2:], 2) if not x.startswith("--") and sys.argv[k - 1] != "--min-score"]
+ROOTS = []
+for i, x in enumerate(_args):
+    tag, root = x.split("=", 1) if "=" in x else (("mirage", "yolo")[i] if i < 2 else f"model{i}", x)
+    ROOTS.append((tag, root))
+mroot = dict(ROOTS).get("mirage")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 _PN = {"person", "man", "woman", "boy", "girl", "child", "kid", "baby", "people", "player", "skier", "surfer",
        "skateboarder", "snowboarder", "rider", "cyclist", "batter", "catcher", "umpire", "pedestrian", "lady",
@@ -52,9 +60,15 @@ def match(A, B, thr=0.5):
     return out
 
 
+def keep(o):
+    return MIN is None or not isinstance(o.get("score"), (int, float)) or o["score"] >= MIN
+
+
 def boxes(r, w, h):
     out = []
     for o in (r or {}).get("objects", []):
+        if not keep(o):
+            continue
         b = o["bbox"]
         out.append({"name": o.get("name", "").lower(), "box": [b[0] / 1000 * w, b[1] / 1000 * h, b[2] / 1000 * w, b[3] / 1000 * h]})
     return out
@@ -67,14 +81,12 @@ nulls = {}
 for f in sorted(os.listdir(os.path.join(probe_dir, "null"))):
     stem = os.path.splitext(f)[0]
     row = {}
-    for tag, root in (("mirage", mroot), ("yolo", yroot)):
-        if not root:
-            continue
+    for tag, root in ROOTS:
         r = load(root, "null", stem)
         if r is None:
             continue
-        row[tag] = {"objects": [f"{o.get('name')} {o.get('score', 0):.2f}" for o in r.get("objects", [])]}
-        if tag == "mirage":
+        row[tag] = {"objects": [f"{o.get('name')} {o.get('score') or 0:.2f}" for o in r.get("objects", []) if keep(o)]}
+        if "text" in r:
             row[tag]["text"] = [t.get("string") for t in r.get("text", [])]
             row[tag]["scene"] = r.get("scene")
             row[tag]["reasoning"] = r.get("reasoning")
@@ -85,9 +97,7 @@ report["null_frames"] = nulls
 meta = json.load(open(os.path.join(probe_dir, "stab", "meta.json")))
 dims = {str(i["id"]): (i["w"], i["h"]) for i in meta["images"]}
 stab = {}
-for tag, root in (("mirage", mroot), ("yolo", yroot)):
-    if not root:
-        continue
+for tag, root in ROOTS:
     agg = collections.defaultdict(lambda: collections.Counter())
     for base, variants in meta["variants"].items():
         w, h = dims[base]
@@ -132,7 +142,7 @@ def lev(a, b):
     return d[-1]
 
 
-ocr_meta = json.load(open(os.path.join(probe_dir, "ocr", "meta.json")))
+ocr_meta = json.load(open(os.path.join(probe_dir, "ocr", "meta.json"))) if mroot else []
 by = collections.defaultdict(lambda: collections.Counter())
 ocr_rows = []
 for e in ocr_meta:

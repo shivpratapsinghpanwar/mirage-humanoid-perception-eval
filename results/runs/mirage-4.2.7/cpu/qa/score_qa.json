@@ -1,0 +1,57 @@
+{
+ "answers": 254,
+ "errors": 0,
+ "latency_ms_per_question": {
+  "median": 784,
+  "p90": 905
+ },
+ "tasks": {
+  "blank_person": {
+   "n": 6,
+   "accuracy_%": 33.3,
+   "abstain_%": 0.0
+  },
+  "blank_text": {
+   "n": 6,
+   "accuracy_%": 0.0,
+   "abstain_%": 0.0
+  },
+  "chair_present": {
+   "n": 60,
+   "accuracy_%": 13.3,
+   "abstain_%": 68.3
+  },
+  "dog_or_cat": {
+   "n": 30,
+   "accuracy_%": 50.0,
+   "abstain_%": 0.0,
+   "answers_by_true_class": {
+    "dog": {
+     "dog": 15
+    },
+    "cat": {
+     "dog": 15
+    }
+   }
+  },
+  "people_count": {
+   "n": 60,
+   "accuracy_%": 50.0,
+   "abstain_%": 0.0,
+   "mae": 1.82
+  },
+  "person_present": {
+   "n": 60,
+   "accuracy_%": 28.3,
+   "abstain_%": 16.7,
+   "recall_%": 30.0,
+   "specificity_%": 26.7
+  },
+  "sign_text": {
+   "n": 32,
+   "accuracy_%": 0.0,
+   "abstain_%": 0.0,
+   "mean_cer": 1.0
+  }
+ }
+}

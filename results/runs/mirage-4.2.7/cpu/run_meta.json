@@ -1,0 +1,21 @@
+{
+ "model": "mirage",
+ "package": "cactus-compute",
+ "version": "4.2.7",
+ "engine": "4.1.4",
+ "weights_rev": "76c1e9e53381aca8fc3843c636216c96ff220122",
+ "device": "cpu",
+ "threads": null,
+ "threshold": "model default",
+ "load_s": 12.47,
+ "tasks": {
+  "coco": 300,
+  "null": 6,
+  "stab": 64,
+  "ocr": 32
+ },
+ "finished": "2026-11-24T00:36:39",
+ "cpu": "Intel64 Family 6 Model 140 Stepping 2, GenuineIntel",
+ "os": "Windows-11-10.0.26300-SP0",
+ "peak_rss_mb": 205.3
+}

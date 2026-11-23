@@ -1,0 +1,66 @@
+name: Submit results for a model
+description: Add a detector or VLM to the leaderboard (same images, same scorers).
+title: "[results] <model name>"
+labels: ["results"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for adding a model. Results are accepted when they can be reproduced from raw outputs:
+        run `eval/12_run_model.py` (detectors) or `eval/16_run_qa.py` (VLMs) with a new adapter, then
+        `eval/18_leaderboard.py`. A pull request with the adapter and the `results/runs/<model>/...`
+        folder is the easiest way; this form is for when you can only share a link.
+  - type: input
+    id: model
+    attributes:
+      label: Model and exact version
+      description: Hub link or repo, plus revision / commit / weights file
+      placeholder: "org/model @ abc1234"
+    validations:
+      required: true
+  - type: dropdown
+    id: track
+    attributes:
+      label: Track
+      options:
+        - Detection (COCO-300 + probes)
+        - Visual question answering (qa_set.json)
+        - Both
+    validations:
+      required: true
+  - type: input
+    id: hardware
+    attributes:
+      label: Hardware used for latency
+      placeholder: "e.g. Jetson Orin Nano 8GB, TensorRT FP16 / Raspberry Pi 5 CPU / RTX 3060"
+    validations:
+      required: true
+  - type: input
+    id: threshold
+    attributes:
+      label: Score threshold used (detectors)
+      description: The library's documented default; raw outputs saved at 0.05 if possible
+  - type: textarea
+    id: numbers
+    attributes:
+      label: Leaderboard row(s)
+      description: Paste the row printed by eval/18_leaderboard.py
+      render: markdown
+    validations:
+      required: true
+  - type: input
+    id: outputs
+    attributes:
+      label: Link to raw outputs
+      description: Folder with one JSON per image (detectors) or answers.jsonl (VLMs)
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: Same 300 image ids (results/coco_mirage/_sample_ids.json) and the frozen qa_set.json, unmodified
+          required: true
+        - label: No per-model prompt tuning; greedy decoding for VLMs
+          required: true

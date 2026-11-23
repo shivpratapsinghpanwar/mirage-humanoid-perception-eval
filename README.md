@@ -12,6 +12,23 @@ Not affiliated with Cactus Compute. All results were measured on one x86 laptop 
 | **Hugging Face:** [shivpratapsingh/mirage-humanoid-perception-benchmark](https://huggingface.co/datasets/shivpratapsingh/mirage-humanoid-perception-benchmark) | Browsable table of the 300 test images (photo, ground truth, Mirage and YOLO26n outputs), loadable with `datasets`, plus all files |
 | **Kaggle:** [sspanwar/mirage-humanoid-perception-benchmark](https://www.kaggle.com/datasets/sspanwar/mirage-humanoid-perception-benchmark) | Same files as a Kaggle dataset |
 
+> **Update 2026-11-24: re-checked on `cactus-compute` 4.2.7** (engine 4.1.4, same weights `76c1e9e`), calling the stock API with no wrapper:
+> - **Crash fixed.** The NaN/invalid-JSON crash was fixed upstream in 4.2.6 ([cactus#201](https://github.com/cactus-compute/cactus/issues/201)). 4.2.7 ran all 402 test images (COCO-300 and probes) without an error.
+> - **Accuracy unchanged.** Recall 34.5% (34.2% on 4.2.2); person recall / precision 33.8% / 54.3%.
+> - **Faster.** Median COCO latency fell from 1.75 s to 1.27 s.
+> - **`extract()` still does not track the image.**
+>   - "dog" for all 30 dog/cat photos (P(dog) 0.71 on dogs vs 0.66 on cats).
+>   - People count "0" on all 60 images.
+>   - The free-text field returns its own name.
+> - **Correction: `set_threads()` works.** Call it **before** the model is created, as [cactus#188](https://github.com/cactus-compute/cactus/issues/188) documents; our first test called it after loading.
+>   - 4 threads: 1.10 s median, 3.8 cores busy.
+>   - 8 threads: 1.06 s median, 7.7 cores busy.
+>   - 1 thread: 3.57 s.
+>   - Outputs are identical in every setting.
+>   - So Mirage can be held to half the CPU, leaving room for SLAM or control.
+>
+> The tables below are from the original 4.2.2 run. The 4.2.7 outputs and scores are in `results/runs/mirage-4.2.7/`.
+
 ![COCO photo with ground truth, Mirage and YOLO26n boxes side by side](media/gallery/random_01_246963.jpg)
 *A random image from the 300-image test set: COCO ground truth (green), Mirage boxes and masks (blue), YOLO26n (orange). Mirage calls the motorcycles "bicycle", the riders "cyclist" and the stop sign just "sign".*
 
@@ -25,7 +42,7 @@ The evaluation used **still images only**. The videos step through those images;
 - It finds about a third of objects and people.
 - About a third of its names are wrong.
 - Its output changes between nearly identical frames.
-- The stock Python API crashes on 18% of real photos.
+- On 4.2.2 the stock Python API crashed on 18% of real photos. This is fixed in 4.2.6 (see the update above).
 - `extract()` (yes/no, count and free-text questions) gave answers that did not track the image.
 
 **What works:**
@@ -164,7 +181,7 @@ Depending on wording, `extract()` output was constant, inverted or abstained, wh
 
 ![Latency per option mode, Mirage vs YOLO26n](media/charts/latency.png)
 
-- **Threads:** `set_threads(1…8)` made no difference (1.8–2.1 s in that run). The engine keeps 5–6 of 8 logical cores busy regardless, so it cannot be throttled to leave room for SLAM or control.
+- **Threads (corrected 2026-11-24):** calling `set_threads(1…8)` *after* the model had loaded made no difference (1.8–2.1 s, 5–6 of 8 logical cores busy). Called *before* the model is created, it works: on 4.2.7, 4 threads run at the same speed as 8 while using half the cores (`eval/13_threads.py`, `results/runs/mirage-4.2.7/cpu/threads.json`).
 - **Input size:** downscaling to 320–640 px wide before the call did not help (the model works on a fixed 512 px canvas).
 - **RAM:** process RSS was ~123 MB after load and ~194 MB peak.
 - **Determinism:** the same input gives the same output.
@@ -173,10 +190,11 @@ Depending on wording, `extract()` output was constant, inverted or abstained, wh
 ## Bugs and quirks found (cactus-compute 4.2.2, engine 4.1.1, win_amd64)
 1. **Invalid JSON crash.**
    - The engine sometimes prints a NaN score as `-nan(ind)`, so `Mirage.describe()` raises `JSONDecodeError`. This happened on **53/300 (17.7%)** COCO images.
+   - **Fixed in cactus-compute 4.2.6** ([cactus#201](https://github.com/cactus-compute/cactus/issues/201)); 0 errors on 4.2.7.
    - `eval/mirage_safe.py` calls the engine directly and replaces non-finite numbers with `null`.
    - Objects with a NaN score land in the 0.0–0.1 score bin of `results/score_coco_mirage.json`.
 2. **`extract()` answers do not track the image** (see above).
-3. **`set_threads()` is ignored** by Mirage.
+3. ~~`set_threads()` is ignored by Mirage.~~ **Corrected:** it works when called before the model is created ([cactus#188](https://github.com/cactus-compute/cactus/issues/188)); our test called it after loading.
 4. **Unknown option keys are silently accepted.** For example, `{"not_an_option": 1}` runs normally, so a typo in an option goes unnoticed. An unknown section name does raise an error.
 5. **`id` in the output groups objects by class, not by instance,** and `relations` refer to these group ids. As a result, "person standing_on ocean" cannot be tied to one person.
 6. **No tracking or video API, no depth output and no GPU path.**

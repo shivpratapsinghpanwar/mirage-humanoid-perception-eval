@@ -1,0 +1,47 @@
+{
+ "cactus_compute": "4.2.7",
+ "images": 20,
+ "logical_cpus": 8,
+ "results": [
+  {
+   "setting": "default",
+   "median_ms": 1099,
+   "p90_ms": 1606,
+   "mean_ms": 1164,
+   "cpu_cores_used": 7.37,
+   "outputs_identical_to_default": true
+  },
+  {
+   "setting": "1",
+   "median_ms": 3566,
+   "p90_ms": 5514,
+   "mean_ms": 3791,
+   "cpu_cores_used": 1.0,
+   "outputs_identical_to_default": true
+  },
+  {
+   "setting": "2",
+   "median_ms": 1934,
+   "p90_ms": 2796,
+   "mean_ms": 2027,
+   "cpu_cores_used": 1.95,
+   "outputs_identical_to_default": true
+  },
+  {
+   "setting": "4",
+   "median_ms": 1101,
+   "p90_ms": 1596,
+   "mean_ms": 1165,
+   "cpu_cores_used": 3.81,
+   "outputs_identical_to_default": true
+  },
+  {
+   "setting": "8",
+   "median_ms": 1061,
+   "p90_ms": 1499,
+   "mean_ms": 1104,
+   "cpu_cores_used": 7.68,
+   "outputs_identical_to_default": true
+  }
+ ]
+}
