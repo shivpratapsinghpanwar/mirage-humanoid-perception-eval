@@ -152,7 +152,8 @@ class OWLv2:
         with self.torch.inference_mode():
             out = self.model(**inputs)
         side = max(W, H)  # OWLv2 pads to a square; boxes come back in padded coordinates
-        r = self.proc.post_process_object_detection(out, threshold=self.thr, target_sizes=[(side, side)])[0]
+        r = self.proc.image_processor.post_process_object_detection(out, threshold=self.thr,
+                                                                    target_sizes=[(side, side)])[0]
         objs = []
         for (x1, y1, x2, y2), c, s in zip(r["boxes"].tolist(), r["labels"].tolist(), r["scores"].tolist()):
             x1, y1, x2, y2 = max(0, x1), max(0, y1), min(W, x2), min(H, y2)
@@ -199,7 +200,7 @@ class Florence2:
     def __init__(self, device="cpu", threshold=None, repo="florence-community/Florence-2-base", **_):
         import torch
         from transformers import AutoProcessor, Florence2ForConditionalGeneration
-        self.dtype = torch.float16 if device.startswith("cuda") else torch.float32
+        self.dtype = torch.float32  # fp32 on CPU and GPU, so both passes give the same boxes
         self.proc = AutoProcessor.from_pretrained(repo)
         self.model = Florence2ForConditionalGeneration.from_pretrained(repo, dtype=self.dtype).to(device).eval()
         self.torch, self.repo, self.device = torch, repo, device

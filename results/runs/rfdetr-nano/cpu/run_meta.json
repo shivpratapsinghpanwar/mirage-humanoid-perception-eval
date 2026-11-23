@@ -1,0 +1,19 @@
+{
+ "model": "rfdetr-nano",
+ "package": "rfdetr",
+ "version": "1.12.1",
+ "size": "nano",
+ "threshold": 0.05,
+ "torch": "2.7.1+cu118",
+ "device": "cpu",
+ "torch_threads": 4,
+ "params": 30467298,
+ "load_s": 12.5,
+ "tasks": {
+  "coco": 300
+ },
+ "finished": "2026-11-24T00:57:36",
+ "cpu": "Intel64 Family 6 Model 140 Stepping 2, GenuineIntel",
+ "os": "Windows-11-10.0.26300-SP0",
+ "peak_rss_mb": 1141.6
+}

@@ -1,0 +1,23 @@
+{
+ "model": "yolo26n",
+ "package": "ultralytics",
+ "version": "8.4.216",
+ "weights": "yolo26n.pt",
+ "threshold": 0.05,
+ "torch": "2.7.1+cu118",
+ "device": "cuda",
+ "torch_threads": 1,
+ "gpu": "NVIDIA GeForce RTX 2050",
+ "params": 2572280,
+ "load_s": 3.87,
+ "tasks": {
+  "coco": 300,
+  "null": 6,
+  "stab": 64
+ },
+ "finished": "2026-11-24T00:55:31",
+ "cpu": "Intel64 Family 6 Model 140 Stepping 2, GenuineIntel",
+ "os": "Windows-11-10.0.26300-SP0",
+ "peak_rss_mb": 3210.3,
+ "peak_gpu_mem_mb": 68.4
+}

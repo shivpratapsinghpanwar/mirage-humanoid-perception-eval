@@ -18,7 +18,7 @@ PY = sys.executable
 R = lambda *p: os.path.join(RES, *p)  # noqa: E731
 
 # key, name, params (M), licence, default threshold (None = model returns no usable score),
-# {hardware: run root}; the first root with COCO outputs is the accuracy source.
+# {hardware: run root}. Accuracy comes from the most complete run; latency from every run (>= 20 images).
 DETECTORS = [
     ("mirage", "Mirage (cactus-compute 4.2.7)", 51.3, "Apache-2.0", None,
      {"laptop CPU": R("runs", "mirage-4.2.7", "cpu")}),
@@ -83,9 +83,13 @@ def meta(root):
 
 board = {"detectors": [], "vlm_qa": []}
 for key, name, params, lic, thr, roots in DETECTORS:
-    acc_root = next((r for r in roots.values() if os.path.isdir(os.path.join(r, "coco"))), None)
-    if not acc_root:
+    # accuracy source: the run with the most COCO outputs (ties: the one that also ran the probes)
+    cands = [(len([f for f in os.listdir(os.path.join(r, "coco")) if f[0] != "_"]),
+              os.path.isdir(os.path.join(r, "stab")), r) for r in roots.values() if os.path.isdir(os.path.join(r, "coco"))]
+    if not cands or max(cands)[0] < 300:
+        print("incomplete or missing", key, flush=True)
         continue
+    acc_root = max(cands)[2]
     args = [os.path.join(EV, "05_coco_score.py"), os.path.join(ROOT, "data", "coco_val2017_used.json"),
             os.path.join(acc_root, "coco")] + (["--min-score", str(thr)] if thr is not None else [])
     s = run_json(args)
@@ -101,6 +105,10 @@ for key, name, params, lic, thr, roots in DETECTORS:
            "label_agreement": s["label_agreement_on_matched_%"]["all"],
            "person_recall": s["person"]["instance_recall@0.5_%"], "person_precision": s["person"]["instance_precision@0.5_%"],
            "person_image_false_alarm": s["person"]["image_false_alarm_rate_%"], "run_errors": s["run_errors"]}
+    if key.endswith("detect-person"):  # queried for "person" only: all-object metrics are meaningless
+        for f in ("recall_all", "recall_small", "recall_medium", "recall_large", "precision_all", "label_agreement"):
+            row[f] = None
+        row["note"] = "person-only queries"
     if p:
         st = p["stability"]["m"]
         row["same_label_persistence_mean"] = round(statistics.mean(v["same_label_persist_%"] for v in st.values()), 1)
@@ -113,9 +121,11 @@ for key, name, params, lic, thr, roots in DETECTORS:
     print("scored", key, flush=True)
 
 for key, name, params, lic, roots in VLMS:
-    acc = next((r for r in roots.values() if os.path.exists(os.path.join(r, "answers.jsonl"))), None)
-    if not acc:
+    cands = [(sum(1 for _ in open(os.path.join(r, "answers.jsonl"), encoding="utf-8")), r) for r in roots.values()
+             if os.path.exists(os.path.join(r, "answers.jsonl"))]
+    if not cands:
         continue
+    acc = max(cands)[1]
     s = run_json([os.path.join(EV, "17_score_qa.py"), os.path.join(acc, "answers.jsonl")])
     if s["answers"] < 254:
         print("incomplete", key, s["answers"], flush=True)

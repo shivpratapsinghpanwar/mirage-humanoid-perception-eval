@@ -30,8 +30,9 @@ sh(f"{sys.executable} -c 'import transformers, torch; print(transformers.__versi
 # Moondream's remote code may need an older transformers than the other models, so it runs first with
 # Kaggle's preinstalled version; on failure it retries once with transformers<5. Then the remaining
 # models run on transformers 5.24.0, the version used on the laptop.
-MOONDREAM = [("qa", "moondream2", ""), ("det", "moondream2-detect-person", "--tasks coco,null")]
-REST = [("qa", "qwen3-vl-2b", ""), ("qa", "smolvlm2-2.2b", ""), ("qa", "lfm2.5-vl-1.6b", "")]
+# fp32 everywhere (T4/P100 have no native bf16; fp16 can overflow in some VLMs); same as the laptop runs.
+MOONDREAM = [("qa", "moondream2", "--dtype fp32"), ("det", "moondream2-detect-person", "--tasks coco,null")]
+REST = [("qa", "qwen3-vl-2b", "--dtype fp32"), ("qa", "smolvlm2-2.2b", "--dtype fp32"), ("qa", "lfm2.5-vl-1.6b", "--dtype fp32")]
 status = []
 
 

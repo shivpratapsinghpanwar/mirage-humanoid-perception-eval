@@ -1,0 +1,19 @@
+{
+ "model": "yolo26n",
+ "package": "ultralytics",
+ "version": "8.4.216",
+ "weights": "yolo26n.pt",
+ "threshold": 0.05,
+ "torch": "2.7.1+cu118",
+ "device": "cpu",
+ "torch_threads": 7,
+ "params": 2572280,
+ "load_s": 3.13,
+ "tasks": {
+  "coco": 300
+ },
+ "finished": "2026-11-24T00:55:54",
+ "cpu": "Intel64 Family 6 Model 140 Stepping 2, GenuineIntel",
+ "os": "Windows-11-10.0.26300-SP0",
+ "peak_rss_mb": 736.6
+}

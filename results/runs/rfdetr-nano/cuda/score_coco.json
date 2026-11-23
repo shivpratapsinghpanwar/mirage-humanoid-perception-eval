@@ -1,0 +1,140 @@
+{
+ "images": 300,
+ "gt_boxes": 2287,
+ "pred_boxes": 1362,
+ "preds_per_image": 4.54,
+ "min_score": 0.5,
+ "class_agnostic_precision@0.5_%": 87.7,
+ "class_agnostic_recall@0.5": {
+  "all": 52.2,
+  "small": 25.0,
+  "medium": 63.2,
+  "large": 82.4,
+  "person": 59.9,
+  "household": 38.6,
+  "other": 61.0
+ },
+ "gt_counts": {
+  "all": 2287,
+  "small": 931,
+  "medium": 812,
+  "large": 544,
+  "person": 671,
+  "household": 867,
+  "other": 749
+ },
+ "label_agreement_on_matched_%": {
+  "all": 98.6,
+  "person": 100.0,
+  "household": 98.5,
+  "other": 97.4
+ },
+ "person": {
+  "instance_recall@0.5_%": 59.9,
+  "instance_precision@0.5_%": 91.4,
+  "recall_by_size_%": {
+   "small": 24.2,
+   "medium": 73.6,
+   "large": 95.0
+  },
+  "gt_by_size": {
+   "small": 264,
+   "medium": 227,
+   "large": 180
+  },
+  "image_level_recall_%": 91.8,
+  "image_level_recall_large_person_%": 97.0,
+  "image_false_alarm_rate_%": 0.7,
+  "images_with_person": 159,
+  "images_without_person": 141
+ },
+ "score_calibration (bin: n_preds, %matching_any_GT@0.5)": {
+  "0.5-0.6": [
+   216,
+   67.6
+  ],
+  "0.6-0.7": [
+   221,
+   76.0
+  ],
+  "0.7-0.8": [
+   227,
+   88.5
+  ],
+  "0.8-0.9": [
+   345,
+   96.2
+  ],
+  "0.9-1.0": [
+   353,
+   98.3
+  ]
+ },
+ "latency_ms": {
+  "median": 26.8698999998378,
+  "p90": 32.14910000042437
+ },
+ "run_errors": 0,
+ "top_label_confusions(gt->pred)": [
+  [
+   "cake",
+   "donut",
+   4
+  ],
+  [
+   "truck",
+   "car",
+   3
+  ],
+  [
+   "bench",
+   "person",
+   1
+  ],
+  [
+   "sheep",
+   "horse",
+   1
+  ],
+  [
+   "bowl",
+   "apple",
+   1
+  ],
+  [
+   "dining table",
+   "bowl",
+   1
+  ],
+  [
+   "cup",
+   "bowl",
+   1
+  ],
+  [
+   "remote",
+   "cell phone",
+   1
+  ],
+  [
+   "chair",
+   "couch",
+   1
+  ],
+  [
+   "truck",
+   "bus",
+   1
+  ],
+  [
+   "dog",
+   "sheep",
+   1
+  ],
+  [
+   "elephant",
+   "horse",
+   1
+  ]
+ ]
+}

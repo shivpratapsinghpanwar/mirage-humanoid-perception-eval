@@ -78,18 +78,18 @@ class HFVLM:
 
 
 class Moondream2:
-    def __init__(self, device="cpu", repo="vikhyatk/moondream2", revision="2025-06-21", **_):
+    def __init__(self, device="cpu", dtype="auto", repo="vikhyatk/moondream2", revision="2025-06-21", **_):
         import torch
         from transformers import AutoModelForCausalLM
         self.torch, self.repo, self.rev, self.device = torch, repo, revision, device
+        self.dtype = {"auto": (torch.float16 if device.startswith("cuda") else torch.float32),
+                      "bf16": torch.bfloat16, "fp32": torch.float32}[dtype]
         self.model = AutoModelForCausalLM.from_pretrained(
-            repo, revision=revision, trust_remote_code=True,
-            dtype=torch.float16 if device.startswith("cuda") else torch.float32,
-            device_map={"": device}).eval()
+            repo, revision=revision, trust_remote_code=True, dtype=self.dtype, device_map={"": device}).eval()
 
     def info(self):
         return {"package": "transformers", "version": _ver("transformers"), "repo": self.repo, "revision": self.rev,
-                "torch": self.torch.__version__, "device": self.device}
+                "dtype": str(self.dtype), "torch": self.torch.__version__, "device": self.device}
 
     def __call__(self, path, item):
         img = Image.open(path).convert("RGB")

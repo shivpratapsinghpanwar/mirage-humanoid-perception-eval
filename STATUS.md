@@ -20,19 +20,19 @@ Started 2026-11-24. One model at a time; push after each. Kaggle: only one new n
 | Model | Track | Where | Status |
 |---|---|---|---|
 | Mirage, cactus-compute 4.2.2 (engine 4.1.1) | detector + extract | laptop CPU | done (published 2026-11-23) |
-| Mirage, cactus-compute 4.2.7 (engine 4.1.4, same weights) | re-check | laptop CPU | COCO + probes done: 0 errors in 402 stock describe() calls (NaN fixed); recall 34.5% (4.2.2: 34.2%), median 1.27 s (4.2.2: 1.75 s). extract() still broken (dog 30/30, count always 0, string echoes field name). Threads test running |
+| Mirage, cactus-compute 4.2.7 (engine 4.1.4, same weights) | re-check | laptop CPU | COCO + probes done: 0 errors in 402 stock describe() calls (NaN fixed); recall 34.5% (4.2.2: 34.2%), median 1.27 s (4.2.2: 1.75 s). extract() still broken (dog 30/30, count always 0, string echoes field name). set_threads before load WORKS (4 thr = 1.10 s / 3.8 cores; 8 thr = 1.06 s). Public pages corrected 2026-11-24 (GitHub 50605eb, HF 97b0167, Kaggle description) |
 | YOLO26n | detector | laptop CPU | done |
-| RF-DETR | detector | laptop CPU/GPU | pending |
-| D-FINE | detector | laptop CPU/GPU | pending |
-| RTMDet | detector | laptop / Kaggle | pending |
-| OWLv2 | open-vocab detector | laptop GPU | pending |
-| Florence-2 | VLM | laptop | pending |
+| RF-DETR Nano / Small | detector | laptop GPU + CPU | running (eval/run_expansion.ps1) |
+| D-FINE N / S | detector | laptop GPU + CPU | running |
+| RTMDet-tiny / s (official mmdet 3.3) | detector | laptop GPU + CPU | running |
+| OWLv2 base (80 COCO prompts) | open-vocab detector | laptop GPU + CPU(60 imgs) | running |
+| Florence-2 base (<OD>) | detector | laptop GPU + CPU(60 imgs) | running |
 | SmolVLM2 | VLM | laptop | pending |
 | LFM2.5-VL-450M | VLM | laptop | pending |
 | Moondream 2 | VLM | laptop GPU / Kaggle | pending |
-| Qwen2.5-VL-3B (or newer small Qwen-VL) | VLM | Kaggle | pending |
+| Qwen3-VL-2B, SmolVLM2-2.2B, LFM2.5-VL-1.6B | VLM | Kaggle | pending (kaggle/vlm_gpu.py) |
 
 ## Then
-- Leaderboard, CITATION.cff, results-submission issue template, social preview image.
+- Leaderboard (eval/18_leaderboard.py), social preview image. CITATION.cff and issue template done.
 - Update GitHub README, HF dataset, Kaggle dataset (new version).
 - Public posts: HF discussion on the Mirage page; GitHub issue for `extract()` only if it reproduces on 4.2.7 (NaN crash is #201, fixed in 4.2.6); HF post; social drafts.
